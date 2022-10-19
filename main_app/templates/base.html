@@ -23,8 +23,9 @@
             </li>
           </ul>
           <ul class="right">
-            <li><a href="/about">About</a></li>
-            <li><a href="/capybaras">View all Capybaras</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'index' %}">View all Capybaras</a></li>
+            <li><a href="{% url 'caps_create' %}">Add a Capybara</a></li>
           </ul>
         </div>
       </nav>

@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from main_app.models import Capybara
+from django.views.generic.edit import CreateView
 
 # Define the home view
 def home(request):
@@ -17,3 +18,8 @@ def cap_index(request):
 def cap_detail(request, capybara_id):
     capybara = Capybara.objects.get(id=capybara_id)
     return render(request, 'capybaras/detail.html', { 'capybara' : capybara})
+
+class CapCreate(CreateView):
+    model = Capybara
+    fields = '__all__'
+    success_url = '/capybaras/'
