@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from main_app.models import Capybara
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Define the home view
 def home(request):
@@ -22,4 +22,13 @@ def cap_detail(request, capybara_id):
 class CapCreate(CreateView):
     model = Capybara
     fields = '__all__'
+    success_url = '/capybaras/'
+
+class CapUpdate(UpdateView):
+    model = Capybara
+    fields = ['color', 'description', 'age']
+    success_url = '/capybaras/'
+
+class CapDelete(DeleteView):
+    model = Capybara
     success_url = '/capybaras/'
