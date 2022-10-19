@@ -1,23 +1,43 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{{capybara.name}} Details</h1>
+<h1>Capybara Details</h1>
 
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ capybara.name }}</span>
-    <p>Color: {{ capybara.color }}</p>
-    <p>Description: {{ capybara.description }}</p>
-    {% if capybara.age > 0 %}
-    <p>Age: {{ capybara.age }}</p>
-    {% else %}
-    <p>Age: Little young rodent</p>
-    {% endif %}
-    <img src={{capybara.image}} style="height: 200px; width: 200px;" />
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ capybara.name }}</span>
+        <p>Color: {{ capybara.color }}</p>
+        <p>Description: {{ capybara.description }}</p>
+        {% if capybara.age > 0 %}
+        <p>Age: {{ capybara.age }}</p>
+        {% else %}
+        <p>Age: Tiny large rodent</p>
+        {% endif %}
+      </div>
+      <div class="card-action">
+        <a href="{% url 'caps_update' capybara.id %}">Edit</a>
+        <a href="{% url 'caps_delete' capybara.id %}">Delete</a>
+      </div>
+    </div>
   </div>
-  <div clas="card-action">
-    <a href="{% url 'caps_update' capybara.id %}">Edit</a>
-    <a href="{% url 'caps_delete' capybara.id %}">Delete</a>
+  <div class="col s6">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Cleaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cleaning in capybara.cleaning_set.all %}
+        <tr>
+          <td>{{cleaning.date}}</td>
+          <td>{{cleaning.get_clean_display}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
-
 {% endblock %}
