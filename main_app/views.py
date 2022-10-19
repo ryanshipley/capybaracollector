@@ -12,4 +12,4 @@ def about(request):
 
 def cap_index(request):
     capybaras = Capybara.objects.all()
-    return render(request, 'capybaras/index.hmtl', { 'capybaras' : capybaras })
+    return render(request, 'capybaras/index.html', { 'capybaras' : capybaras })
