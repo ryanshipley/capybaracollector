@@ -13,3 +13,7 @@ def about(request):
 def cap_index(request):
     capybaras = Capybara.objects.all()
     return render(request, 'capybaras/index.html', { 'capybaras' : capybaras })
+
+def cap_detail(request, capybara_id):
+    capybara = Capybara.objects.get(id=capybara_id)
+    return render(request, 'capybaras/detail.html', { 'capybara' : capybara})
