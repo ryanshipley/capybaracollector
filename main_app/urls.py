@@ -9,5 +9,6 @@ urlpatterns = [
     path('capybaras/create/', views.CapCreate.as_view(), name='caps_create'),
     path('capybaras/<int:pk>/update/', views.CapUpdate.as_view(), name='caps_update'),
     path('capybaras/<int:pk>/delete/', views.CapDelete.as_view(), name='caps_delete'),
-
+    path('capybaras/<int:capybara_id>/add_cleaning/', views.add_cleaning, name='add_cleaning'),
+    
 ]
